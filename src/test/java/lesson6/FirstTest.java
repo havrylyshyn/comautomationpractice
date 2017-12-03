@@ -32,7 +32,7 @@ public class FirstTest {
         webDriver = null;
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void gitHubShouldBeOpened() {
         Assert.assertThat("Check site title", webDriver.getTitle(), containsString("Store1"));
