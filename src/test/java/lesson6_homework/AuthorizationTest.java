@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElement;
 
 @RunWith(JUnit4.class)
@@ -38,7 +37,7 @@ public class AuthorizationTest {
         webDriver = null;
     }
 
-    private void asserThat(ExpectedCondition<Boolean> condition){
+    private void assertThat(ExpectedCondition<Boolean> condition){
         (new WebDriverWait(webDriver, 5)).until(condition);
     }
 
@@ -47,7 +46,7 @@ public class AuthorizationTest {
         MainPage mainPage = new MainPage(webDriver);
         LoginPage loginPage = mainPage.openLoginPage();
         AccountPage accountPage = loginPage.logIn(email, password);
-        asserThat(textToBePresentInElement(accountPage.accountPage, "MY ACCOUNT"));
+        assertThat(textToBePresentInElement(accountPage.accountPage, "MY ACCOUNT"));
     }
 
     @Ignore
@@ -59,13 +58,13 @@ public class AuthorizationTest {
         loginPage.enterPassword(password);
         loginPage.clickSignInBtn();
         AccountPage accountPage = new AccountPage(webDriver);
-        asserThat(textToBePresentInElement(accountPage.accountPage, "MY ACCOUNT"));
+        assertThat(textToBePresentInElement(accountPage.accountPage, "MY ACCOUNT"));
     }
 
     @Test
     public void LoginPageIsOpenedAfterLogout(){
         AccountPage accountPage = new AccountPage(webDriver);
         LoginPage loginPage = accountPage.signOut();
-        asserThat(textToBePresentInElement(loginPage.loginPage, "AUTHENTICATION"));
+        assertThat(textToBePresentInElement(loginPage.loginPage, "AUTHENTICATION"));
     }
 }
