@@ -19,7 +19,6 @@ public class SearchTest {
 
     @BeforeClass
     public static void setUp() {
-        //System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
