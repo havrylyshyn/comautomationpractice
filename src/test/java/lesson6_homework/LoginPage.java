@@ -33,17 +33,20 @@ public class LoginPage {
         return new AccountPage(webDriver);
     }
 
-    public void enterUsername(String username) {
+    public LoginPage enterUsername(String username) {
         email.clear();
         email.sendKeys(username);
+        return this;
     }
 
-    public void enterPassword(String password) {
+    public LoginPage enterPassword(String password) {
         this.password.clear();
         this.password.sendKeys(password);
+        return this;
     }
 
-    public void clickSignInBtn() {
+    public LoginPage clickSignInBtn() {
         loginBtn.click();
+        return this;
     }
 }

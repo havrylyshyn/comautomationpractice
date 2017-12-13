@@ -42,7 +42,7 @@ public class AuthorizationTest {
     }
 
     @Test
-    public void AccountPageIsOpenedAfterLogin(){
+    public void checkAccountPageIsOpenedAfterLogin(){
         MainPage mainPage = new MainPage(webDriver);
         LoginPage loginPage = mainPage.openLoginPage();
         AccountPage accountPage = loginPage.logIn(email, password);
@@ -51,18 +51,16 @@ public class AuthorizationTest {
 
     @Ignore
     @Test
-    public void AccountPageIsOpenedAfterLogin2(){
+    public void checkAccountPageIsOpenedAfterLogin2(){
         MainPage mainPage = new MainPage(webDriver);
         LoginPage loginPage = mainPage.openLoginPage();
-        loginPage.enterUsername(email);
-        loginPage.enterPassword(password);
-        loginPage.clickSignInBtn();
+        loginPage.enterUsername(email).enterPassword(password).clickSignInBtn();
         AccountPage accountPage = new AccountPage(webDriver);
         assertThat(textToBePresentInElement(accountPage.accountPage, "MY ACCOUNT"));
     }
 
     @Test
-    public void LoginPageIsOpenedAfterLogout(){
+    public void checkLoginPageIsOpenedAfterLogout(){
         AccountPage accountPage = new AccountPage(webDriver);
         LoginPage loginPage = accountPage.signOut();
         assertThat(textToBePresentInElement(loginPage.loginPage, "AUTHENTICATION"));
